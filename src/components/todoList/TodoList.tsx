@@ -10,7 +10,7 @@ export interface TodoInterface {
 }
 
 function TodoList() {
-	const [todos, setTodos] = useState([]);
+	const [todos, setTodos] = useState<TodoInterface[]>([]);
 
 	const handleAdd = (todo: TodoInterface) => {
 		setTodos([...todos, todo]);
