@@ -20,7 +20,9 @@ function TodoList() {
 		<div>
 			<AddTodo onAdd={handleAdd} />
 			<div>
-				<TodoItem />
+				{todos.map((item) => (
+					<TodoItem key={item.id} todo={item} />
+				))}
 			</div>
 		</div>
 	);
