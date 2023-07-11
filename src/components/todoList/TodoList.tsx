@@ -30,7 +30,9 @@ function TodoList() {
 		);
 	};
 
-	const handleDelete = () => {};
+	const handleDelete = (id: number) => {
+		setTodos(todos.filter((todo) => todo.id !== id));
+	};
 
 	return (
 		<div>

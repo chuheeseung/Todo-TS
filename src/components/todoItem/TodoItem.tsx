@@ -5,7 +5,7 @@ type TodoProps = {
 	todo: TodoInterface;
 	onClickCheckBox(id: number): void;
 	onUpdate(id: number, newInput: string): void;
-	onDelete(): void;
+	onDelete(id: number): void;
 };
 
 // Typescript에서 Props 선언하는 법 정리하기
@@ -16,7 +16,7 @@ function TodoItem({
 	onDelete,
 }: TodoProps): React.ReactElement {
 	const { id, text, completed } = todo;
-	const [active, setActive] = useState<boolean>(false);
+	const [updated, setUpdated] = useState<boolean>(false);
 	const [newInput, setNewInput] = useState<string>('');
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,34 +28,31 @@ function TodoItem({
 	};
 
 	const handleUpdate = () => {
-		setActive((active) => !active);
+		setUpdated((active) => !active);
 	};
 
 	const submitUpdate = (e: React.MouseEvent<HTMLButtonElement>) => {
-		// e.preventDefault();
-
 		onUpdate(id, newInput);
-		setActive((active) => !active);
+		setUpdated((active) => !active);
 	};
 
-	const handleDelete = () => {
-		console.log('delete');
+	const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
+		onDelete(id);
 	};
 
 	return (
 		<div style={{ display: 'flex' }}>
 			<input type="checkbox" checked={completed} onChange={handleChange} />
-			{active ? (
+			{updated ? (
 				<input placeholder={text} value={newInput} onChange={handleNewInput} />
 			) : (
 				<div>{text}</div>
 			)}
-			{active ? (
+			{updated ? (
 				<button onClick={submitUpdate}>완료</button>
 			) : (
 				<button onClick={handleUpdate}>수정</button>
 			)}
-
 			<button onClick={handleDelete}>삭제</button>
 		</div>
 	);
