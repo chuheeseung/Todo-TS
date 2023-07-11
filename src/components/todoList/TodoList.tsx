@@ -19,12 +19,16 @@ function TodoList() {
 	const handleCheckBox = (id: number) => {
 		setTodos(
 			todos.map((todo) =>
-				todo.id ? { ...todo, completed: !todo.completed } : todo
+				todo.id === id ? { ...todo, completed: !todo.completed } : todo
 			)
 		);
 	};
 
-	const handleUpdate = () => {};
+	const handleUpdate = (id: number, newInput: string) => {
+		setTodos(
+			todos.map((todo) => (todo.id === id ? { ...todo, text: newInput } : todo))
+		);
+	};
 
 	const handleDelete = () => {};
 

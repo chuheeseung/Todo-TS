@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TodoInterface } from '../todoList/TodoList';
 
 type TodoProps = {
 	todo: TodoInterface;
 	onClickCheckBox(id: number): void;
-	onUpdate(): void;
+	onUpdate(id: number, newInput: string): void;
 	onDelete(): void;
 };
 
@@ -16,14 +16,26 @@ function TodoItem({
 	onDelete,
 }: TodoProps): React.ReactElement {
 	const { id, text, completed } = todo;
+	const [active, setActive] = useState<boolean>(false);
+	const [newInput, setNewInput] = useState<string>('');
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		console.log(e.target.checked);
 		onClickCheckBox(id);
 	};
 
+	const handleNewInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setNewInput(e.target.value);
+	};
+
 	const handleUpdate = () => {
-		console.log('update');
+		setActive((active) => !active);
+	};
+
+	const submitUpdate = (e: React.MouseEvent<HTMLButtonElement>) => {
+		// e.preventDefault();
+
+		onUpdate(id, newInput);
+		setActive((active) => !active);
 	};
 
 	const handleDelete = () => {
@@ -33,8 +45,17 @@ function TodoItem({
 	return (
 		<div style={{ display: 'flex' }}>
 			<input type="checkbox" checked={completed} onChange={handleChange} />
-			<div>{text}</div>
-			<button onClick={handleUpdate}>수정</button>
+			{active ? (
+				<input placeholder={text} value={newInput} onChange={handleNewInput} />
+			) : (
+				<div>{text}</div>
+			)}
+			{active ? (
+				<button onClick={submitUpdate}>완료</button>
+			) : (
+				<button onClick={handleUpdate}>수정</button>
+			)}
+
 			<button onClick={handleDelete}>삭제</button>
 		</div>
 	);
