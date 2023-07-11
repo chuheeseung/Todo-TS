@@ -16,12 +16,30 @@ function TodoList() {
 		setTodos([...todos, todo]);
 	};
 
+	const handleCheckBox = (id: number) => {
+		setTodos(
+			todos.map((todo) =>
+				todo.id ? { ...todo, completed: !todo.completed } : todo
+			)
+		);
+	};
+
+	const handleUpdate = () => {};
+
+	const handleDelete = () => {};
+
 	return (
 		<div>
 			<AddTodo onAdd={handleAdd} />
 			<div>
 				{todos.map((item) => (
-					<TodoItem key={item.id} todo={item} />
+					<TodoItem
+						key={item.id}
+						todo={item}
+						onClickCheckBox={handleCheckBox}
+						onUpdate={handleUpdate}
+						onDelete={handleDelete}
+					/>
 				))}
 			</div>
 		</div>
