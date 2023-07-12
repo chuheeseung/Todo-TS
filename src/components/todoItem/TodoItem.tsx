@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TodoInterface } from '../todoList/TodoList';
+import styles from './TodoItem.module.css';
 
 type TodoProps = {
 	todo: TodoInterface;
@@ -46,19 +47,35 @@ function TodoItem({
 	};
 
 	return (
-		<div style={{ display: 'flex' }}>
-			<input type="checkbox" checked={completed} onChange={handleChange} />
+		<div className={styles.todoItem} style={{ display: 'flex' }}>
+			<input
+				type="checkbox"
+				className={styles.checkBox}
+				checked={completed}
+				onChange={handleChange}
+			/>
 			{updated ? (
-				<input placeholder={text} value={newInput} onChange={handleNewInput} />
+				<input
+					className={styles.newInput}
+					placeholder={text}
+					value={newInput}
+					onChange={handleNewInput}
+				/>
 			) : (
-				<div>{text}</div>
+				<div className={styles.text}>{text}</div>
 			)}
 			{updated ? (
-				<button onClick={submitUpdate}>완료</button>
+				<button className={styles.button} onClick={submitUpdate}>
+					완료
+				</button>
 			) : (
-				<button onClick={handleUpdate}>수정</button>
+				<button className={styles.button} onClick={handleUpdate}>
+					수정
+				</button>
 			)}
-			<button onClick={handleDelete}>삭제</button>
+			<button className={styles.button} onClick={handleDelete}>
+				삭제
+			</button>
 		</div>
 	);
 }

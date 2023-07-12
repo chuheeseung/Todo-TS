@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { TodoInterface } from '../todoList/TodoList';
+import styles from './AddTodo.module.css';
 
 interface InputProps {
 	onAdd: (todo: TodoInterface) => void;
@@ -32,9 +33,15 @@ function AddTodo({ onAdd }: InputProps) {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<input type="text" value={newInput} onChange={handleChange} />
-			<button>추가</button>
+		<form className={styles.formWrap} onSubmit={handleSubmit}>
+			<input
+				type="text"
+				placeholder="새로운 Todo를 입력해주세요."
+				className={styles.formInput}
+				value={newInput}
+				onChange={handleChange}
+			/>
+			<button className={styles.formButton}>추가</button>
 		</form>
 	);
 }

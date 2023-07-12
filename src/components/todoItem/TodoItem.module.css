@@ -1,0 +1,29 @@
+.todoItem {
+	width: 100%;
+}
+
+.checkBox {
+	width: 1.8rem;
+	height: 1.8rem;
+}
+
+.newInput {
+}
+
+.newInput:focus {
+}
+
+.text {
+	padding: 0 1rem;
+	font-size: 1.8rem;
+}
+
+.button {
+	margin: 0 0.5rem;
+	padding: 0.5rem 1rem;
+	border: none;
+	border-radius: 2rem;
+}
+
+.button:hover {
+}
