@@ -32,7 +32,12 @@ function TodoItem({
 	};
 
 	const submitUpdate = (e: React.MouseEvent<HTMLButtonElement>) => {
-		onUpdate(id, newInput);
+		if (newInput === '') {
+			return;
+		} else {
+			onUpdate(id, newInput);
+		}
+
 		setUpdated((active) => !active);
 	};
 
