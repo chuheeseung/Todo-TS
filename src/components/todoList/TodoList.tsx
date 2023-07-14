@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AddTodo from '../addTodo/AddTodo';
 import TodoItem from '../todoItem/TodoItem';
-import styles from './TodoList.module.css';
+// import styles from './TodoList.module.css';
 
 export interface TodoInterface {
 	// Q. Type으로 선언해야 하나 아니면 Interface로 선언해야 하나?
@@ -36,9 +36,9 @@ function TodoList() {
 	};
 
 	return (
-		<div className={styles.container}>
+		<div>
 			<AddTodo onAdd={handleAdd} />
-			<div className={styles.wrapper}>
+			<div className="w-2/5 mx-auto my-0 items-center">
 				{todos.map((item) => (
 					<TodoItem
 						key={item.id}
