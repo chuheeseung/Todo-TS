@@ -4,7 +4,7 @@
 }
 
 .formInput {
-	width: 30%;
+	width: 20%;
 	height: 2rem;
 	padding: 0.4rem 0.5rem;
 	font-size: 1.6rem;
@@ -18,9 +18,10 @@
 	padding: 1rem 2rem;
 	margin-left: 2rem;
 	font-size: 1.8rem;
+	color: white;
 	border-radius: 2rem;
 	border: none;
-	background-color: rgb(244, 248, 158);
+	background-color: rgb(14, 57, 246);
 	cursor: pointer;
 }
 

@@ -33,12 +33,9 @@ function TodoItem({
 	};
 
 	const submitUpdate = (e: React.MouseEvent<HTMLButtonElement>) => {
-		if (newInput === '') {
-			return;
-		} else {
+		if (newInput !== '') {
 			onUpdate(id, newInput);
 		}
-
 		setUpdated((active) => !active);
 	};
 
@@ -65,11 +62,18 @@ function TodoItem({
 				<div className={styles.text}>{text}</div>
 			)}
 			{updated ? (
-				<button className={styles.button} onClick={submitUpdate}>
+				<button
+					id={styles.update}
+					className={styles.button}
+					onClick={submitUpdate}
+				>
 					완료
 				</button>
 			) : (
-				<button className={styles.button} onClick={handleUpdate}>
+				<button
+					className={`${styles.button} ${styles.update}`}
+					onClick={handleUpdate}
+				>
 					수정
 				</button>
 			)}
